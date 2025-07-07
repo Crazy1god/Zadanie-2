@@ -1,0 +1,11 @@
+{% extends 'default.html' %}
+{% load censor %}
+
+{% block content %}
+  {% for item in news %}
+    <h2>{{ item.title | censor }}</h2>
+    <p>{{ item.pub_date }}</p>
+    <p>{{ item.text|slice:":20"| censor }}...</p>
+    <a href="{% url 'news_detail' pk=item.pk %}">Подробнее</a>
+  {% endfor %}
+{% endblock %}

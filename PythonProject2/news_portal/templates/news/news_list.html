@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Список новостей</h2>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <a href="{% url 'article_detail' article.id %}">{{ article.title }}</a> - {{ article.date|date:"d.m.Y" }}
+                <br>
+                <small>{{ article.content|truncatechars:20 }}...</small>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
